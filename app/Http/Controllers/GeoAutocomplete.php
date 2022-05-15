@@ -32,7 +32,7 @@ class GeoAutocomplete extends Controller
         //
 
         
-        $geoAutocompleteV2RQ = new GeoAutocompleteV2RQ();
+       // $geoAutocompleteV2RQ = new GeoAutocompleteV2RQ();
     /*     $response       = new GeoAutocompleteV2RS(); */
 
   
