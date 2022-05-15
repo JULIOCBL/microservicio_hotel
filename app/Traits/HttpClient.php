@@ -33,7 +33,7 @@ trait HttpClient
         }
 
         curl_close($ch); */
-        return ['URL' =>  $this->baseUri . $requestUrl ];
+        return ['URL' =>   $this->url($formParams)];
     }
 
 
