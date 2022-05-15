@@ -59,12 +59,19 @@ class GeoAutocomplete extends Controller
         $rules = [
             'query' => 'required|min:3|max:25',
             'category' => 'required|min:3|max:4|in :CITY,RAIL,AIR',
-            'limit' => 'required|min:1|max:255',
+            'limit' => 'min:1|max:255',
             'clientId' => 'required|min:5|max:40',
         ];
 
-        $this->validate($request,$rules);
+        $messages = [
+            'query.required' => 'Ingresa al menos 3 letras',
+            'category.required' =>'Categorias diponibles [CITY, RAIL, AIR]',
+            'limit.required' => 'Cantidad de resultados a retornar',
+            'clientId.required' => 'id del usuario'
+        ];
 
+        $this->validate($request,$rules , $messages);
+      
         $geoAutocompleteV2RQ = new GeoAutocompleteV2RQ();
         /*     $response       = new GeoAutocompleteV2RS(); */
 
