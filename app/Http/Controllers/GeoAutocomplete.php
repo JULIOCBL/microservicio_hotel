@@ -60,7 +60,7 @@ class GeoAutocomplete extends Controller
         $geoAutocompleteV2RQ = new GeoAutocompleteV2RQ();
         /*     $response       = new GeoAutocompleteV2RS(); */
 
-        return  $this->successResponse($request->all()/* $geoAutocompleteV2RQ($request) */);
+        return  $this->successResponse($geoAutocompleteV2RQ($request));
     }
 
     /**
