@@ -22,6 +22,6 @@ class GeoAutocompleteV2RQ
         $this->baseUri =  config('links.sabre.base_uri');
         $this->secret =  config('links.sabre.token');
 
-        return   $this->performRequest('GET', '/v2/geo/autocomplete', $request) ;
+        return  $request /*  $this->performRequest('GET', '/v2/geo/autocomplete', $request) */ ;
     }
 }
