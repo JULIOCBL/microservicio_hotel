@@ -7,7 +7,7 @@ trait HttpClient
 
     public function performRequest($method, $requestUrl,  $formParams = [],  $headers = [])
     {
-       /*  $headers = array();
+        $headers = array();
         $headers[] = 'Accept: application/json';
         $headers[] = "Authorization: {$this->secret}";
 
@@ -32,8 +32,8 @@ trait HttpClient
             echo 'Error:' . curl_error($ch);
         }
 
-        curl_close($ch); */
-        return ['URL' =>   $this->url($formParams)];
+        curl_close($ch);
+        return $response;
     }
 
 
@@ -44,8 +44,9 @@ trait HttpClient
         if (is_array($datos)) {
             $postArray = array();
             reset($datos);
-            while (list($k, $v) = each($datos)) {
-                $postArray[] = urlencode($k) . '=' . urlencode($v);
+            
+            foreach ($datos as $key => $value) {
+                $postArray[] = urlencode($key) . '=' . urlencode($value);
             }
 
             $request = implode('&', $postArray);
