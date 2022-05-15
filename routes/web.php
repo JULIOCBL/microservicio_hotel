@@ -14,7 +14,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return response()->json(['API' => 'Hotel']);
+    return response()->json(['API' => function_exists('curl_init')]);
 });
 $router->get('buscar',"GeoAutocomplete@index");
 
