@@ -80,7 +80,7 @@ class Handler extends ExceptionHandler
         if (env('APP_DEBUG', true)) {
             return parent::render($request, $exception);
         }
-
-        return $this->errorResponse('Error inesperado', Response::HTTP_INTERNAL_SERVER_ERROR);
+        return parent::render($request, $exception);
+      //  return $this->errorResponse('Error inesperado', Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }
