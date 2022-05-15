@@ -59,8 +59,8 @@ $app->singleton(
 |
 */
 
-$app->configure('app');
-
+$app->configure('app'); 
+$app->configure('links');
 /*
 |--------------------------------------------------------------------------
 | Register Middleware

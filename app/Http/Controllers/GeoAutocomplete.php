@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Schemas\GeoAutocomplete\GeoAutocompleteV2RQ;
+use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 
 class GeoAutocomplete extends Controller
 {
+
+    use ApiResponser;
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,9 @@ class GeoAutocomplete extends Controller
      */
     public function index()
     {
-        return response()->json(['api' => " hola mundo"]);
+        return response()->json(['api' => config('services.links.base_uri')]);
+
+        
     }
 
     /**
@@ -21,9 +27,17 @@ class GeoAutocomplete extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+
+        
+        $geoAutocompleteV2RQ = new GeoAutocompleteV2RQ();
+    /*     $response       = new GeoAutocompleteV2RS(); */
+
+  
+
+        return  $this->successResponse( $geoAutocompleteV2RQ($request) );
     }
 
     /**
@@ -33,8 +47,9 @@ class GeoAutocomplete extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    { 
+
+        
     }
 
     /**

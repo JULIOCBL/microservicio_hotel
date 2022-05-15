@@ -16,5 +16,5 @@
 $router->get('/', function () use ($router) {
     return response()->json(['API' => 'Hotel']);
 });
-$router->get('buscar',"GeoAutocomplete@index");
+$router->post('buscar',"GeoAutocomplete@create");
 
