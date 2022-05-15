@@ -13,7 +13,7 @@ class GeoAutocomplete extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(['api' => " hola mundo"]);
     }
 
     /**
