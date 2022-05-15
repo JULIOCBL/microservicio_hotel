@@ -77,10 +77,10 @@ class Handler extends ExceptionHandler
             return $this->errorResponse($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        if (env('APP_DEBUG', true)) {
+        if (env('APP_DEBUG', false)) {
             return parent::render($request, $exception);
         }
-        return parent::render($request, $exception);
-      //  return $this->errorResponse('Error inesperado', Response::HTTP_INTERNAL_SERVER_ERROR);
+
+        return $this->errorResponse('Error inesperado', Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }
