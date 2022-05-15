@@ -35,7 +35,7 @@ class GeoAutocomplete extends Controller
 
 
 
-        return  $this->successResponse( /* $geoAutocompleteV2RQ($request) */$request->all());
+        return  $this->successResponse($geoAutocompleteV2RQ($request));
     }
 
     /**
