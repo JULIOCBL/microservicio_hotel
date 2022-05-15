@@ -18,8 +18,6 @@ class GeoAutocomplete extends Controller
     public function index()
     {
         return response()->json(['api' => config('services.links.base_uri')]);
-
-        
     }
 
     /**
@@ -31,13 +29,13 @@ class GeoAutocomplete extends Controller
     {
         //
 
-        
-       // $geoAutocompleteV2RQ = new GeoAutocompleteV2RQ();
-    /*     $response       = new GeoAutocompleteV2RS(); */
 
-  
+        $geoAutocompleteV2RQ = new GeoAutocompleteV2RQ();
+        /*     $response       = new GeoAutocompleteV2RS(); */
 
-        return  $this->successResponse( /* $geoAutocompleteV2RQ($request) */ $request->all() );
+
+
+        return  $this->successResponse( /* $geoAutocompleteV2RQ($request) */$request->all());
     }
 
     /**
@@ -47,9 +45,7 @@ class GeoAutocomplete extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
-
-        
+    {
     }
 
     /**
