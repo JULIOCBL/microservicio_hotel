@@ -58,7 +58,7 @@ class GeoAutocomplete extends Controller
     {
         $rules = [
             'query' => 'required|min:3|max:25',
-            'gender' => 'required|min:3|max:4|in :CITY,RAIL,AIR',
+            'category' => 'required|min:3|max:4|in :CITY,RAIL,AIR',
             'limit' => 'required|min:1|max:255',
             'clientId' => 'required|min:5|max:40',
         ];
