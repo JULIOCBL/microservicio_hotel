@@ -57,7 +57,7 @@ class GeoAutocomplete extends Controller
     public function show(Request $request)
     {
         $rules = [
-            'query' => 'required|min:3|max:25',
+            'query' => 'required|min:3|max:255',
             'category' => 'required|min:3|max:4|in :CITY,RAIL,AIR',
             'limit' => 'min:1|max:255',
             'clientId' => 'required|min:5|max:40',
