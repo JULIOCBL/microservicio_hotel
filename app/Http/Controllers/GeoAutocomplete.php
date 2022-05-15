@@ -57,10 +57,10 @@ class GeoAutocomplete extends Controller
     public function show(Request $request)
     {
         $rules = [
-            'query' => 'required|max:25',
-            'gender' => 'required|max:4|in :CITY,RAIL,AIR',
-            'limit' => 'required|max:255',
-            'clientId' => 'required|max:40',
+            'query' => 'required|min:3|max:25',
+            'gender' => 'required|min:3|max:4|in :CITY,RAIL,AIR',
+            'limit' => 'required|min:1|max:255',
+            'clientId' => 'required|min:5|max:40',
         ];
 
         $this->validate($request,$rules);
