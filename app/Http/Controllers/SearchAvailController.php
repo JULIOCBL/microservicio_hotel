@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Schemas\GeoAutocomplete\GeoAutocompleteV2RQ;
-use App\Schemas\GeoSearch\GeoSearchV2RQ;
+use App\Schemas\GetHoteImage\GetHotelImageV1RQ;
+use App\Schemas\GetHotelAvail\GetHotelAvailV2RQ;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 
-class GeoAutocomplete extends Controller
+class SearchAvailController extends Controller
 {
-
-    use ApiResponser;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    use ApiResponser;
     public function index()
     {
-        return response()->json(['api' => config('services.links.base_uri')]);
+        //
     }
 
     /**
@@ -26,17 +26,9 @@ class GeoAutocomplete extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         //
-
-
-        $geoAutocompleteV2RQ = new GeoAutocompleteV2RQ();
-        /*     $response       = new GeoAutocompleteV2RS(); */
-
-
-
-        return  $this->successResponse($geoAutocompleteV2RQ($request));
     }
 
     /**
@@ -47,6 +39,7 @@ class GeoAutocomplete extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
@@ -57,33 +50,8 @@ class GeoAutocomplete extends Controller
      */
     public function show(Request $request)
     {
-        $rules = [
-            'query' => 'required|min:3|max:255',
-            'category' => 'required|min:3|max:4|in :CITY,RAIL,AIR',
-            'limit' => 'min:1|max:255',
-            'clientId' => 'required|min:5|max:40',
-        ];
-
-        $messages = [
-            'query.required' => 'Ingresa al menos 3 letras',
-            'category.required' =>'Categorias diponibles [CITY, RAIL, AIR]',
-            'limit.required' => 'Cantidad de resultados a retornar',
-            'clientId.required' => 'id del usuario'
-        ];
-
-        $this->validate($request,$rules , $messages);
-      
-        $geoAutocompleteV2RQ = new GeoAutocompleteV2RQ();
-        /*     $response       = new GeoAutocompleteV2RS(); */
-
-        return  $this->successResponse($geoAutocompleteV2RQ($request));
-    }
-
-
-    public function getSearch(Request $request){
-
-        $geoSearchV2RQ =   new GeoSearchV2RQ();
-        return  $this->successResponse($geoSearchV2RQ($request));
+       $searchAvail = new  GetHotelAvailV2RQ();
+       return  $this->successResponse($searchAvail($request));
     }
 
     /**
@@ -92,6 +60,25 @@ class GeoAutocomplete extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     public function getImage(Request $request){
+
+        $rules = [
+            'txt_hotel_code' => 'required|max:13',
+            'txt_code_context' => 'required|min:5|max:6|in :GLOBAL,SABRE'
+        ];
+
+        $messages = [
+            'txt_hotel_code.required' => 'Ingresa el codigo del hotel',
+            'txt_code_context.required' =>'Categorias diponibles [GLOBAL, SABRE]'
+        ];
+
+        $this->validate($request,$rules,$messages);
+
+        $getImage = new GetHotelImageV1RQ();
+
+        return  $this->successResponse($getImage($request));
+     }
     public function edit($id)
     {
         //

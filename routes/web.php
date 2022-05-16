@@ -17,4 +17,12 @@ $router->get('/', function () use ($router) {
     return response()->json(['API' => 'Hotel']);
 });
 $router->post('buscar',"GeoAutocomplete@show");
+$router->post('hotelDisponibilidad',"SearchAvailController@show");
 
+$router->post('getImage',"SearchAvailController@getImage");
+
+$router->post('getHotelSearch',"SearchAvailController@getImage");
+$router->post('get',"SearchAvailController@getImage");
+$router->post('getImage',"SearchAvailController@getImage");
+$router->post('getImage',"SearchAvailController@getImage");
+$router->post('getImage',"SearchAvailController@getImage");

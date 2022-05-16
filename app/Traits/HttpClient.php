@@ -15,10 +15,18 @@ trait HttpClient
         $ch = curl_init();
 
         if ($method == 'GET' || $method == 'get') {
-            curl_setopt($ch, CURLOPT_URL, $this->baseUri . $requestUrl . $this->url($formParams));
+
+            $formParams = is_array($formParams) ? '?'. http_build_query($formParams) : '';
+
+            curl_setopt($ch, CURLOPT_URL, $this->baseUri . $requestUrl .  $formParams );
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         } else if ($method == 'POST' || $method == 'post') {
             $headers[] = 'Content-Type: application/json';
+
+            if (is_array($formParams)) {
+                $formParams = json_encode($formParams);
+            }
+
             curl_setopt($ch, CURLOPT_URL,  $this->baseUri . $requestUrl);
             curl_setopt($ch, CURLOPT_POST, $method);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $formParams);
@@ -37,25 +45,4 @@ trait HttpClient
     }
 
 
-    public  function url(array $datos)
-    {
-        $request = '';
-
-        if (is_array($datos)) {
-            $postArray = array();
-            reset($datos);
-            
-            foreach ($datos as $key => $value) {
-                $postArray[] = urlencode($key) . '=' . urlencode($value);
-            }
-
-            $request = implode('&', $postArray);
-        }
-
-        if ($request == '') {
-            return $request;
-        } else {
-            return '?' . $request;
-        }
-    }
 }
